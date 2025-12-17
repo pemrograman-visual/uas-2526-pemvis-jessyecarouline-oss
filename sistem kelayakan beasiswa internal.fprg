@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="sistem kelayakan beasiswa internal"/>
+        <attribute name="authors" value="User"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-12-17 04:41:37 PM"/>
+        <attribute name="created" value="VXNlcjtMQVBUT1AtUEZLSTVTR0k7MjAyNS0xMi0xNzswNDoyMTozMiBQTTsyNzc4"/>
+        <attribute name="edited" value="VXNlcjtMQVBUT1AtUEZLSTVTR0k7MjAyNS0xMi0xNzswNDo0MTozNyBQTTsxOzI4OTM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="status" type="String" array="False" size=""/>
+            <declare name="nama" type="String" array="True" size="5"/>
+            <declare name="ipk" type="Real" array="False" size=""/>
+            <declare name="pendapatankeluarga" type="Integer" array="False" size=""/>
+            <declare name="tanggungankeluarga, i" type="Integer" array="False" size=""/>
+            <declare name="nama" type="String" array="True" size="5"/>
+            <for variable="i" start="0" end="4" direction="inc" step="1">
+                <input variable="nama[i]"/>
+                <input variable="ipk"/>
+                <if expression="ipk&gt;=3.0">
+                    <then>
+                        <assign variable="status" expression="lolos"/>
+                    </then>
+                    <else>
+                        <input variable="pendapatan"/>
+                        <if expression="pendapatan&lt;=3000000">
+                            <then>
+                                <assign variable="status" expression="lolos"/>
+                            </then>
+                            <else>
+                                <input variable="tanggungan"/>
+                                <if expression="tanggungan&gt;=3">
+                                    <then>
+                                        <assign variable="status" expression="lolos"/>
+                                    </then>
+                                    <else/>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </for>
+            <output expression="&quot;namapendaftar=&quot;&amp;nama[0]&amp;nama[1]&amp;nama[2]&amp;nama[3]&amp;nama[4]&amp;nama[5]" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

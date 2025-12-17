@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="sistem evaluasi kantin asrama"/>
+        <attribute name="authors" value="User"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-12-17 03:44:08 PM"/>
+        <attribute name="created" value="VXNlcjtMQVBUT1AtUEZLSTVTR0k7MjAyNS0xMi0xNzswMToyMzozMSBQTTsyNzc2"/>
+        <attribute name="edited" value="VXNlcjtMQVBUT1AtUEZLSTVTR0k7MjAyNS0xMi0xNzswMzo0NDowOCBQTTsyOzI4OTQ="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, tertinggi, terendah, count, n, rating" type="Integer" array="False" size=""/>
+            <declare name="ratarata, total" type="Real" array="False" size=""/>
+            <declare name="status" type="String" array="False" size=""/>
+            <declare name="data" type="Real" array="True" size="6"/>
+            <assign variable="total" expression="0"/>
+            <assign variable="count" expression="0"/>
+            <assign variable="tertinggi" expression="999"/>
+            <assign variable="terendah" expression="-999"/>
+            <for variable="i" start="0" end="5" direction="inc" step="1">
+                <input variable="rating"/>
+                <assign variable="data[i]" expression="rating"/>
+                <assign variable="total" expression="total+rating"/>
+                <if expression="tertinggi&gt;=rating">
+                    <then>
+                        <assign variable="tertinggi" expression="rating"/>
+                        <assign variable="count" expression="count+1"/>
+                    </then>
+                    <else>
+                        <if expression="terendah&lt;=rating">
+                            <then>
+                                <assign variable="terendah" expression="rating"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </for>
+            <assign variable="ratarata" expression="total/6"/>
+            <if expression="ratarata&gt;=4">
+                <then>
+                    <assign variable="status" expression="&quot;kantin dalam kondisi baik&quot;"/>
+                </then>
+                <else>
+                    <if expression="ratarata&gt;=3">
+                        <then>
+                            <assign variable="status" expression="&quot;kondisi cukup masih perlu peningkatan&quot;"/>
+                        </then>
+                        <else>
+                            <assign variable="status" expression="&quot;kantin perlu evaluasi manajemen&quot;"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <output expression="&quot; daftar rating= &quot;&amp;data[0]&amp;data[1]&amp;data[2]&amp;data[3]&amp;data[4]&amp;data[5]" newline="True"/>
+            <output expression="&quot;ratarata=&quot; &amp;ratarata" newline="True"/>
+            <output expression="&quot;tertinggi=&quot;&amp;tertinggi" newline="True"/>
+            <output expression="&quot;terendah=&quot;&amp;terendah" newline="True"/>
+            <output expression="&quot;status&quot;&amp;status" newline="True"/>
+        </body>
+    </function>
+    <function name="input" type="None" variable="">
+        <parameters>
+            <parameter name="data" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="data" type="Integer" array="True" size="6"/>
+            <declare name="rating, i" type="Real" array="False" size=""/>
+            <declare name="total" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="5" direction="inc" step="1">
+                <input variable="data"/>
+                <assign variable="data[i]" expression="rating"/>
+                <assign variable="total" expression="total+rating"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>
